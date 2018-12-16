@@ -28,7 +28,8 @@ class Pix2PixModel(BaseModel):
         self.loss_names = ['G_GAN', 'G_L1', 'D_real', 'D_fake']
         # specify the images you want to save/display. The program will call base_model.get_current_visuals
         self.visual_names = ['real_A', 'fake_B', 'real_B']
-        # specify the models you want to save to the disk. The program will call base_model.save_networks and base_model.load_networks
+        # specify the models you want to save to the disk. The program will call base_model.save_networks and
+        #  base_model.load_networks
         if self.isTrain:
             self.model_names = ['G', 'D']
         else:  # during test time, only load Gs
@@ -40,7 +41,8 @@ class Pix2PixModel(BaseModel):
         if self.isTrain:
             use_sigmoid = opt.no_lsgan
             self.netD = networks.define_D(opt.input_nc + opt.output_nc, opt.ndf, opt.netD,
-                                          opt.n_layers_D, opt.norm, use_sigmoid, opt.init_type, opt.init_gain, self.gpu_ids)
+                                          opt.n_layers_D, opt.norm, use_sigmoid, opt.init_type, opt.init_gain,
+                                          self.gpu_ids)
 
         if self.isTrain:
             self.fake_AB_pool = ImagePool(opt.pool_size)
