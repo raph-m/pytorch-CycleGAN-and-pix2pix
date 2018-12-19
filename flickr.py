@@ -27,28 +27,30 @@ def download_flickr(query, directory, n_pages=1, per_page=500):
 import os
 from convert_test_set_rgb import get_file_paths
 from PIL import Image
-def convert_directory(directory, target_format="L"):
+
+
+def convert_directory(directory, target_format="L", target_size=500):
     paths = get_file_paths(directory)
 
     for (i, filepath) in enumerate(paths):
         print(filepath)
         img_b = Image.open(filepath).convert(target_format)
+        img_b = img_b.resize((target_size, target_size))
         img_b.save(filepath)
 
     return
 
-directory_b = os.path.join("datasets", "flickr", "trainB")
-convert_directory(directory_b, target_format="RGB")
 
 if __name__ == "__main__":
     query = "sketch portrait charcoal drawing"
     directory_a = os.path.join("datasets", "flickr", "trainA")
-    download_flickr(query, directory_a, n_pages=10, per_page=500)
+    # download_flickr(query, directory_a, n_pages=10, per_page=500)
 
     query = "portrait"
     directory_b = os.path.join("datasets", "flickr", "trainB")
-    download_flickr(query, directory_b, n_pages=10, per_page=500)
+    # download_flickr(query, directory_b, n_pages=10, per_page=500)
 
     convert_directory(directory_a, target_format="L")
+    convert_directory(directory_b, target_format="RGB")
 
 
