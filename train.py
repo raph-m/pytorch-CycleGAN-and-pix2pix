@@ -4,8 +4,8 @@ from data import CreateDataLoader
 from models import create_model
 from util.visualizer import Visualizer
 
-if __name__ == '__main__':
-    opt = TrainOptions().parse()
+
+def train(opt):
     data_loader = CreateDataLoader(opt)
     dataset = data_loader.load_data()
     dataset_size = len(data_loader)
@@ -56,3 +56,43 @@ if __name__ == '__main__':
         print('End of epoch %d / %d \t Time Taken: %d sec' %
               (epoch, opt.niter + opt.niter_decay, time.time() - epoch_start_time))
         model.update_learning_rate()
+
+
+if __name__ == '__main__':
+    opt = TrainOptions().parse()
+
+    import sys
+
+    print(sys.argv)
+    sys.argv.append("hello")
+    print(sys.argv)
+    train(opt)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

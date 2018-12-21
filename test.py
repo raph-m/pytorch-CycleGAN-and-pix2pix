@@ -6,8 +6,7 @@ from util.visualizer import save_images
 from util import html
 
 
-if __name__ == '__main__':
-    opt = TestOptions().parse()
+def test(opt):
     # hard-code some parameters for test
     opt.num_threads = 1   # test code only supports num_threads = 1
     opt.batch_size = 1    # test code only supports batch_size = 1
@@ -38,3 +37,8 @@ if __name__ == '__main__':
         save_images(webpage, visuals, img_path, aspect_ratio=opt.aspect_ratio, width=opt.display_winsize)
     # save the website
     webpage.save()
+
+
+if __name__ == '__main__':
+    opt = TestOptions().parse()
+    test(opt)
