@@ -12,9 +12,15 @@ sudo pip install visdom
 
 python download_google_drive.py
 
+# upload benchmark.zip then move it and unzip it
+mv benchmark.zip pytorch-CycleGAN-and-pix2pix/gdrive/datasets/
+
+
 # setup tunnel ssh or smth
 
 python -m "visdom.server"
 
 # run training, for example:
 python my_scripts.py
+
+unzip benchmark.zip -d pytorch-CycleGAN-and-pix2pix/gdrive/datasets/benchmark/
