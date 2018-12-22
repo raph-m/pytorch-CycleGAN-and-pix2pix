@@ -24,3 +24,13 @@ python -m "visdom.server"
 python my_scripts.py
 
 unzip benchmark.zip -d pytorch-CycleGAN-and-pix2pix/gdrive/datasets/benchmark/
+
+#ssh key 
+
+sur GoogleCloud SDKI 
+ gcloud init
+ ssh-keygen (filename: recvis_ssh)
+ gcloud compute os-login ssh-keys add --key-file recvis_ssh.pub --ttl 0
+ ssh -i recvis_ssh -L 5000:localhost:8097 LOGIN@EXT_IP
+ sudo python -m visdom.server
+	
