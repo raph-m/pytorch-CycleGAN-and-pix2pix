@@ -1,0 +1,20 @@
+# download repo
+# cd to repo
+
+git clone https://github.com/raph-m/pytorch-CycleGAN-and-pix2pix.git
+cd pytorch-CycleGAN-and-pix2pix/
+
+# install requirements. dont ask why the pip script installs in the wrong directory so I had to specify the target
+sudo pip install -r requirements.txt --target /opt/anaconda3/lib/python3.7/site-package
+
+# dont ask why you must install it with the regular pip too
+sudo pip install visdom
+
+python download_google_drive.py
+
+# setup tunnel ssh or smth
+
+python -m "visdom.server"
+
+# run training, for example:
+python my_scripts.py
