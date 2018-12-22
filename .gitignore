@@ -43,3 +43,4 @@ test/data/legacy_serialized.pt
 /my_env.py
 /flickr_download/
 /notes
+/env.py
