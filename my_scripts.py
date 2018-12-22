@@ -82,7 +82,7 @@ def test_cuhk_a_to_b(params, first_arg, benchmark=False):
     current_params = params.copy()
 
     if benchmark:
-        current_params["dataroot"] = "gdrive/datasets/benchmark"
+        current_params["dataroot"] = "gdrive/datasets/benchmark/benchmark"
         current_params["results_dir"] = "benchmark_results"
         current_params["dataset_mode"] = "unaligned"
 
