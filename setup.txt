@@ -12,18 +12,22 @@ sudo pip install visdom
 
 python download_google_drive.py
 
-# upload benchmark.zip then move it and unzip it
-mv benchmark.zip pytorch-CycleGAN-and-pix2pix/gdrive/datasets/
+
+# unzip benchmark to the good location
+unzip benchmark.zip -d pytorch-CycleGAN-and-pix2pix/gdrive/datasets/benchmark/
 
 
-# setup tunnel ssh or smth
+# zip results:
+zip -r benchmark_results.zip benchmark_results
+
 
 python -m "visdom.server"
 
 # run training, for example:
 python my_scripts.py
 
-unzip benchmark.zip -d pytorch-CycleGAN-and-pix2pix/gdrive/datasets/benchmark/
+# download the file:
+pytorch-CycleGAN-and-pix2pix/benchmark_results.zip
 
 #ssh key 
 
@@ -33,4 +37,26 @@ sur GoogleCloud SDKI
  gcloud compute os-login ssh-keys add --key-file recvis_ssh.pub --ttl 0
  ssh -i recvis_ssh -L 5000:localhost:8097 LOGIN@EXT_IP
  sudo python -m visdom.server
-	
+
+# comment runner des scripts en background:
+# il faudrait aussi runner le visdom.server en background je pense
+nohup python my_scripts.py > nohup_out.txt &
+# et quand t'as fait ca tout tourne en background et tu peux fermer toutes les fenêtres de connections SSH. et ca va
+# continuer à tourner. Tu peux afficher ce qu'il se passe dans le fichier nohup_out avec la commande:
+nohup_out.txt
+
+# ensuite le script est en background donc c'est galère si tu veux l'arrêter:
+# tu peux runner cette commande pour voir les trucs en train de tourner:
+ps -ef |grep nohup
+# et enfin tu peux killer le process avec ca (remplacer le truc par l'ID tu process):
+kill 1804
+
+# les commandes nvidia-smi et htop permettent de voir l'utilisation des ressources. Idéalement tu augmentes le
+# batch_size jusqu'a ce que ca te mette un out of memory error
+
+
+
+
+
+
+
