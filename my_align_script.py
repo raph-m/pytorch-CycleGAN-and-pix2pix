@@ -43,10 +43,10 @@ def align_images(a_file_paths, b_file_paths, target_path, mode="RGB"):
 
 if __name__ == '__main__':
 
-    dataset_folder = os.path.join("datasets", "cuhk")
+    dataset_folder = os.path.join("cuhk")
     print(dataset_folder)
 
-    for phase in ["train", "test", "val"]:
+    for phase in ["train", "test"]:
 
         a_path = os.path.join(dataset_folder, phase + 'A')
         b_path = os.path.join(dataset_folder, phase + 'B')

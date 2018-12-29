@@ -39,14 +39,16 @@ if __name__ == "__main__":
 
     # share link of dataset:
     # "https://drive.google.com/file/d/1z1g6fLu-s8-zsfXiTuFgiC7hog0_Km1x/view?usp=sharing"
+    # new link:
+    # https://drive.google.com/file/d/1gO7iejmS0wqfQN31iUrhjV_Cb7UD73Zh/view?usp=sharing
 
     destination = "gdrive"
-    file_id = "1z1g6fLu-s8-zsfXiTuFgiC7hog0_Km1x"
+    file_id = "1gO7iejmS0wqfQN31iUrhjV_Cb7UD73Zh"
 
     download_file_from_google_drive(file_id, destination + ".zip")
 
     with zipfile.ZipFile(destination + ".zip", 'r') as zip_ref:
-        zip_ref.extractall(destination)
+        zip_ref.extractall("")
 
 
 

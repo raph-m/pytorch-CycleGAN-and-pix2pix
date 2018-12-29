@@ -44,3 +44,11 @@ test/data/legacy_serialized.pt
 /flickr_download/
 /notes
 /env.py
+.idea/
+/my_data.zip
+/gdrive.zip
+/my_data/
+/benchmark_results/
+/benchmark_results0/
+/benchmark_results1/
+/gdrive/

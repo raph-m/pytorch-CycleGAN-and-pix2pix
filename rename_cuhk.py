@@ -1,10 +1,16 @@
 import os
 
+# take dataset as you find it on internet. rename the folders you want to trainA, trainB, testA... remove the "photos"
+# folder.
+# run this code
+# then I rearanged the train/test repartition
+# then run "my_align_script"
+
 for setup in ["train", "test"]:
     print("*" * 20)
     print(setup)
 
-    for filename in os.listdir(os.path.join("datasets", "cuhk", setup + "B")):
+    for filename in os.listdir(os.path.join("cuhk", setup + "B")):
 
         filename_without_ext = os.path.splitext(filename)[0]
         extension = os.path.splitext(filename)[1]
@@ -20,11 +26,11 @@ for setup in ["train", "test"]:
 
         new_file_name_with_ext = new_file_name + extension
         os.rename(
-            os.path.join("datasets", "cuhk", setup + "B", filename),
-            os.path.join("datasets", "cuhk", setup + "B", new_file_name_with_ext)
+            os.path.join("cuhk", setup + "B", filename),
+            os.path.join("cuhk", setup + "B", new_file_name_with_ext)
         )
 
 for setup in ["train", "test"]:
-    for filename in os.listdir(os.path.join("datasets", "cuhk", setup + "B")):
-        assert os.path.exists(os.path.join("datasets", "cuhk", setup + "A", filename)),\
-            os.path.join("datasets", "cuhk", setup + "A", filename)
+    for filename in os.listdir(os.path.join("cuhk", setup + "B")):
+        assert os.path.exists(os.path.join("cuhk", setup + "A", filename)),\
+            os.path.join("cuhk", setup + "A", filename)
