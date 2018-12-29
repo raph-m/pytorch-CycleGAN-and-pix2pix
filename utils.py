@@ -17,8 +17,8 @@ elif env_name == "hind":
     local_params = {"cuhk": cuhk, "flickr": flickr}
 
 elif env_name == "compute_engine":
-    cuhk = {"batch_size": "8", "n_epochs": 100}
-    flickr = {"batch_size": "32", "n_epochs": 10}
+    cuhk = {"batch_size": "64", "n_epochs": 100}
+    flickr = {"batch_size": "8", "n_epochs": 10}
     local_params = {"cuhk": cuhk, "flickr": flickr}
 
 netg = "resnet_9blocks"
