@@ -4,7 +4,7 @@ from utils import my_train, flickr_train_params, flickr_params, my_test, copy_ge
 if __name__ == "__main__":
     first_arg = sys.argv[0]
 
-    for import_cuhk in [False, True]:
+    for import_cuhk in [True, False]:
         results_dir = "benchmark_results"
 
         if import_cuhk:
@@ -19,7 +19,7 @@ if __name__ == "__main__":
 
             params.update(flickr_train_params)
 
-            if not import_cuhk and i == 0:
+            if (not import_cuhk) and i == 0:
                 params["continue_train"] = False
             else:
                 params["continue_train"] = True
