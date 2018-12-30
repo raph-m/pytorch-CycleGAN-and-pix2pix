@@ -13,7 +13,7 @@ if __name__ == "__main__":
             copy_generator(origin="BtoA")
             flickr_train_params["continue_train"] = True
 
-        for i in range(5):
+        for i in [0]:
 
             params = flickr_params.copy()
 
