@@ -3,10 +3,12 @@ import os
 from PIL import Image
 
 
-def get_file_paths(folder):
+def get_file_paths(folder, also_filenames=False):
     image_file_paths = []
+    my_filenames = []
     for root, dirs, filenames in os.walk(folder):
         filenames = sorted(filenames)
+        my_filenames = filenames.copy()
         print(filenames)
         for filename in filenames:
             input_path = os.path.abspath(root)
@@ -15,6 +17,8 @@ def get_file_paths(folder):
                 image_file_paths.append(file_path)
 
         break  # prevent descending into subfolders
+    if also_filenames:
+        return image_file_paths, my_filenames
     return image_file_paths
 
 
