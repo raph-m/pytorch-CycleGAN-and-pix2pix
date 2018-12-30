@@ -5,6 +5,9 @@ from test import test
 from env import env_name
 from options.train_options import TrainOptions
 from options.test_options import TestOptions
+from shutil import copyfile
+import os
+
 
 if env_name == "raph":
     cuhk = {"batch_size": "8", "n_epochs": 50}
@@ -114,11 +117,16 @@ def create_env_file():
     f.close()
 
 
-if __name__ == "__main__":
-    print(sys.argv)
-    if len(sys.argv) > 1:
-        batch_size = str(sys.argv[1])
+def copy_generator(origin="AtoB"):
+    path1 = os.path.join("checkpoints", "cuhk_pix2pix_" + origin, "latest_net_G.pth")
+    if origin == "AtoB":
+        target = "latest_net_G_A.pth"
     else:
-        batch_size = "2"
+        target = "latest_net_G_B.pth"
 
+    path2 = os.path.join("checkpoints", "flickr", target)
+    copyfile(path1, path2)
+
+
+if __name__ == "__main__":
     create_env_file()
