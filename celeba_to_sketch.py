@@ -15,10 +15,16 @@ if not os.path.exists(os.path.join("my_data", "celeba", "train")):
 if not os.path.exists(os.path.join("my_data", "celeba", "trainB")):
     os.makedirs(os.path.join("my_data", "celeba", "trainB"))
 
+import time
+start = time.time()
+
 for i in range(len(paths)):
 
     if i % 1000 == 0:
-        print(i)
+        print(i / 1000)
+        if i == 1000:
+            end = time.time()
+            print("time for 1000 it.: ", end - start)
 
     img_a = Image.open(paths[i])
     img_b = np.array(img_a.convert("L"))
