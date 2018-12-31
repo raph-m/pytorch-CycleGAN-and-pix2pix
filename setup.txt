@@ -12,6 +12,11 @@ sudo pip install visdom
 
 python download_google_drive.py
 
+# doesnt work with new zip, probably because its too big
+# try
+# wget --no-check-certificate 'https://docs.google.com/uc?export=download&id=FILEID' -O FILENAME
+wget --no-check-certificate 'https://docs.google.com/uc?export=download&id=1eb6EltjSy157hmaYN4bH19-Wq89j9Elt' -O gdrive.zip
+
 
 # unzip benchmark to the good location
 unzip benchmark.zip -d pytorch-CycleGAN-and-pix2pix/gdrive/datasets/benchmark/
@@ -19,7 +24,8 @@ unzip benchmark.zip -d pytorch-CycleGAN-and-pix2pix/gdrive/datasets/benchmark/
 
 # zip results:
 zip -r benchmark_results.zip benchmark_results
-
+zip -r benchmark_results_import0.zip benchmark_results_import0
+zip -r benchmark_results0.zip benchmark_results0
 
 python -m "visdom.server"
 

@@ -27,7 +27,8 @@ elif env_name == "compute_engine":
     celeba = {"batch_size": "32", "n_epochs": 2}
     local_params = {"cuhk": cuhk, "flickr": flickr, "celeba": celeba}
 
-netg = "resnet_9blocks"
+netg = "unet_256"
+netg = "unet_256"
 
 base_params = {
     "input_nc": "3",
@@ -64,7 +65,7 @@ celeba_params = {
     "dataset_mode": "aligned",
     "dataroot": "my_data/celeba",
     "model": "pix2pix",
-    "netG": netg,
+    # "netG": netg,
     "batch_size": local_params["celeba"]["batch_size"]
 }
 

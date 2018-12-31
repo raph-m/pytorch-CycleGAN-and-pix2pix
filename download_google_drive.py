@@ -43,14 +43,17 @@ if __name__ == "__main__":
     # https://drive.google.com/file/d/1gO7iejmS0wqfQN31iUrhjV_Cb7UD73Zh/view?usp=sharing
     # new new link:
     # https://drive.google.com/file/d/1eb6EltjSy157hmaYN4bH19-Wq89j9Elt/view?usp=sharing
+    # rar link:
+    # https://drive.google.com/file/d/1gMQ-qxoLgv7lKpoS-hYb8aP4IhcG2DPh/view?usp=sharing
 
     destination = "gdrive"
-    file_id = "1eb6EltjSy157hmaYN4bH19-Wq89j9Elt"
+    file_id = "1gMQ-qxoLgv7lKpoS-hYb8aP4IhcG2DPh"
 
     download_file_from_google_drive(file_id, destination + ".zip")
 
-    with zipfile.ZipFile(destination + ".zip", 'r') as zip_ref:
-        zip_ref.extractall("")
+    # with zipfile.ZipFile(destination + ".zip", 'r') as zip_ref:
+    #   zip_ref.extractall("")
+
 
 
 
