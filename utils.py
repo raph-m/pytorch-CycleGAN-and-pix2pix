@@ -12,17 +12,20 @@ import os
 if env_name == "raph":
     cuhk = {"batch_size": "8", "n_epochs": 50}
     flickr = {"batch_size": "1", "n_epochs": 2}
-    local_params = {"cuhk": cuhk, "flickr": flickr}
+    celeba = {"batch_size": "1", "n_epochs": 2}
+    local_params = {"cuhk": cuhk, "flickr": flickr, "celeba": celeba}
 
 elif env_name == "hind":
     cuhk = {"batch_size": "8", "n_epochs": 5}
     flickr = {"batch_size": "1", "n_epochs": 2}
-    local_params = {"cuhk": cuhk, "flickr": flickr}
+    celeba = {"batch_size": "1", "n_epochs": 2}
+    local_params = {"cuhk": cuhk, "flickr": flickr, "celeba": celeba}
 
 elif env_name == "compute_engine":
     cuhk = {"batch_size": "32", "n_epochs": 100}
     flickr = {"batch_size": "8", "n_epochs": 10}
-    local_params = {"cuhk": cuhk, "flickr": flickr}
+    celeba = {"batch_size": "32", "n_epochs": 2}
+    local_params = {"cuhk": cuhk, "flickr": flickr, "celeba": celeba}
 
 netg = "resnet_9blocks"
 
@@ -56,6 +59,28 @@ cuhk_params_a_to_b = {"direction": "AtoB", "name": "cuhk_pix2pix_AtoB"}
 cuhk_params_a_to_b.update(cuhk_params)
 cuhk_params_b_to_a = {"direction": "BtoA", "name": "cuhk_pix2pix_BtoA"}
 cuhk_params_b_to_a.update(cuhk_params)
+
+celeba_params = {
+    "dataset_mode": "aligned",
+    "dataroot": "my_data/celeba",
+    "model": "pix2pix",
+    "netG": netg,
+    "batch_size": local_params["celeba"]["batch_size"]
+}
+
+celeba_train_params = {
+    "save_epoch_freq": "5",
+    "niter_decay": str(int(local_params["cuhk"]["n_epochs"] / 2)),
+    "niter": str(int(local_params["cuhk"]["n_epochs"] / 2)),
+    "no_lsgan": True,
+    "continue_train": False
+}
+
+celeba_params.update(base_params)
+celeba_params_a_to_b = {"direction": "AtoB", "name": "celeba_pix2pix_AtoB"}
+celeba_params_a_to_b.update(celeba_params)
+celeba_params_b_to_a = {"direction": "BtoA", "name": "celeba_pix2pix_BtoA"}
+celeba_params_b_to_a.update(celeba_params)
 
 flickr_params = {
     "dataroot": "my_data/flickr",

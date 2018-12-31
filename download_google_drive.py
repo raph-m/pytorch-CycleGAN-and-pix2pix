@@ -41,9 +41,11 @@ if __name__ == "__main__":
     # "https://drive.google.com/file/d/1z1g6fLu-s8-zsfXiTuFgiC7hog0_Km1x/view?usp=sharing"
     # new link:
     # https://drive.google.com/file/d/1gO7iejmS0wqfQN31iUrhjV_Cb7UD73Zh/view?usp=sharing
+    # new new link:
+    # https://drive.google.com/file/d/1eb6EltjSy157hmaYN4bH19-Wq89j9Elt/view?usp=sharing
 
     destination = "gdrive"
-    file_id = "1gO7iejmS0wqfQN31iUrhjV_Cb7UD73Zh"
+    file_id = "1eb6EltjSy157hmaYN4bH19-Wq89j9Elt"
 
     download_file_from_google_drive(file_id, destination + ".zip")
 
