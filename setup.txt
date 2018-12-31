@@ -6,6 +6,7 @@ cd pytorch-CycleGAN-and-pix2pix/
 
 # install requirements. dont ask why the pip script installs in the wrong directory so I had to specify the target
 sudo pip install -r requirements.txt --target /opt/anaconda3/lib/python3.7/site-package
+sudo pip install unrar --target /opt/anaconda3/lib/python3.7/site-package
 
 # dont ask why you must install it with the regular pip too
 sudo pip install visdom
