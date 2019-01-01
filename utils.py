@@ -24,7 +24,7 @@ elif env_name == "hind":
 elif env_name == "compute_engine":
     cuhk = {"batch_size": "16", "n_epochs": 100}
     flickr = {"batch_size": "8", "n_epochs": 10}
-    celeba = {"batch_size": "16", "n_epochs": 2}
+    celeba = {"batch_size": "32", "n_epochs": 2}
     local_params = {"cuhk": cuhk, "flickr": flickr, "celeba": celeba}
 
 netg = "unet_256"
