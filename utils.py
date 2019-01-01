@@ -10,9 +10,9 @@ import os
 
 
 if env_name == "raph":
-    cuhk = {"batch_size": "8", "n_epochs": 50}
+    cuhk = {"batch_size": "4", "n_epochs": 50}
     flickr = {"batch_size": "1", "n_epochs": 2}
-    celeba = {"batch_size": "1", "n_epochs": 2}
+    celeba = {"batch_size": "4", "n_epochs": 2}
     local_params = {"cuhk": cuhk, "flickr": flickr, "celeba": celeba}
 
 elif env_name == "hind":
@@ -22,25 +22,22 @@ elif env_name == "hind":
     local_params = {"cuhk": cuhk, "flickr": flickr, "celeba": celeba}
 
 elif env_name == "compute_engine":
-    cuhk = {"batch_size": "32", "n_epochs": 100}
+    cuhk = {"batch_size": "16", "n_epochs": 100}
     flickr = {"batch_size": "8", "n_epochs": 10}
-    celeba = {"batch_size": "32", "n_epochs": 2}
+    celeba = {"batch_size": "16", "n_epochs": 2}
     local_params = {"cuhk": cuhk, "flickr": flickr, "celeba": celeba}
 
-netg = "unet_256"
 netg = "unet_256"
 
 base_params = {
     "input_nc": "3",
     "output_nc": "3",
     "no_dropout": True,
-    "norm": "batch",
-    "loadSize": "128",
-    "fineSize": "128"
+    "norm": "batch"
 }
 
 cuhk_params = {
-    "dataset_mode": "aligned",
+    "dataset_mode": "unaligned",
     "dataroot": "my_data/cuhk",
     "model": "pix2pix",
     "netG": netg,
@@ -65,7 +62,7 @@ celeba_params = {
     "dataset_mode": "aligned",
     "dataroot": "my_data/celeba",
     "model": "pix2pix",
-    # "netG": netg,
+    "netG": netg,
     "batch_size": local_params["celeba"]["batch_size"]
 }
 

@@ -38,16 +38,12 @@ def download_file_from_google_drive(id, destination):
 if __name__ == "__main__":
 
     # share link of dataset:
-    # "https://drive.google.com/file/d/1z1g6fLu-s8-zsfXiTuFgiC7hog0_Km1x/view?usp=sharing"
-    # new link:
-    # https://drive.google.com/file/d/1gO7iejmS0wqfQN31iUrhjV_Cb7UD73Zh/view?usp=sharing
-    # new new link:
-    # https://drive.google.com/file/d/1eb6EltjSy157hmaYN4bH19-Wq89j9Elt/view?usp=sharing
+
     # rar link:
-    # https://drive.google.com/file/d/1gMQ-qxoLgv7lKpoS-hYb8aP4IhcG2DPh/view?usp=sharing
+    # https://drive.google.com/file/d/1sw5-5Cqy2k2MhxXm5NQxTl_LykAq9ggr/view?usp=sharing
 
     destination = "gdrive"
-    file_id = "1gMQ-qxoLgv7lKpoS-hYb8aP4IhcG2DPh"
+    file_id = "1sw5-5Cqy2k2MhxXm5NQxTl_LykAq9ggr"
 
     download_file_from_google_drive(file_id, destination + ".zip")
 
