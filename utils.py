@@ -67,11 +67,13 @@ celeba_params = {
 }
 
 celeba_train_params = {
-    "save_epoch_freq": "5",
     "niter_decay": str(int(local_params["cuhk"]["n_epochs"] / 2)),
     "niter": str(int(local_params["cuhk"]["n_epochs"] / 2)),
     "no_lsgan": True,
-    "continue_train": False
+    "continue_train": False,
+    "save_latest_freq": "5000",
+    "save_epoch_freq": "5000",
+    "save_by_iter": True
 }
 
 celeba_params.update(base_params)

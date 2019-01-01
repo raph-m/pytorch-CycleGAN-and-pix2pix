@@ -50,6 +50,9 @@ if __name__ == "__main__":
     # with zipfile.ZipFile(destination + ".zip", 'r') as zip_ref:
     #   zip_ref.extractall("")
 
+    # then you can unrar the file using:
+
+
 
 
 
