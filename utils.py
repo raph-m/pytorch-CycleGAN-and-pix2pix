@@ -24,7 +24,7 @@ elif env_name == "hind":
 elif env_name == "compute_engine":
     cuhk = {"batch_size": "16", "n_epochs": 100}
     flickr = {"batch_size": "8", "n_epochs": 10}
-    celeba = {"batch_size": "64", "n_epochs": 2}
+    celeba = {"batch_size": "64", "n_epochs": 100}
     local_params = {"cuhk": cuhk, "flickr": flickr, "celeba": celeba}
 
 netg = "unet_256"
@@ -70,7 +70,7 @@ celeba_train_params = {
     "niter_decay": str(int(local_params["cuhk"]["n_epochs"] / 2)),
     "niter": str(int(local_params["cuhk"]["n_epochs"] / 2)),
     "no_lsgan": True,
-    "continue_train": False,
+    "continue_train": True,
     "save_latest_freq": "4992",
     "save_epoch_freq": "4992",
     "save_by_iter": True

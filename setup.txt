@@ -8,6 +8,7 @@ cd pytorch-CycleGAN-and-pix2pix/
 sudo pip install -r requirements.txt --target /opt/anaconda3/lib/python3.7/site-package
 sudo pip install unrar --target /opt/anaconda3/lib/python3.7/site-package
 
+
 # dont ask why you must install it with the regular pip too
 sudo pip install visdom
 
@@ -50,13 +51,16 @@ sur GoogleCloud SDKI
 nohup python my_scripts.py > nohup_out.txt &
 # et quand t'as fait ca tout tourne en background et tu peux fermer toutes les fenêtres de connections SSH. et ca va
 # continuer à tourner. Tu peux afficher ce qu'il se passe dans le fichier nohup_out avec la commande:
-nohup_out.txt
+cat nohup.txt
 
 # ensuite le script est en background donc c'est galère si tu veux l'arrêter:
 # tu peux runner cette commande pour voir les trucs en train de tourner:
 ps -ef |grep nohup
 # et enfin tu peux killer le process avec ca (remplacer le truc par l'ID tu process):
 kill 1804
+
+pour lancer visdom avec nohup: (il faut toujours le lancer avec nohup)
+nohup sudo python -m visdom.server > visdom_out.txt &
 
 # les commandes nvidia-smi et htop permettent de voir l'utilisation des ressources. Idéalement tu augmentes le
 # batch_size jusqu'a ce que ca te mette un out of memory error
