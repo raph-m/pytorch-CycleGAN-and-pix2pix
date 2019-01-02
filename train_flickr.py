@@ -19,14 +19,14 @@ if __name__ == "__main__":
         params.update(flickr_train_params)
 
         if i == 0:
-            params["lambda_A"] = 0.1
-            params["lambda_B"] = 0.1
-            params["lambda_identity"] = 0.5
+            params["lambda_A"] = "0.1"
+            params["lambda_B"] = "0.1"
+            params["lambda_identity"] = "0.5"
 
         else:
-            params["lambda_A"] = 10.0
-            params["lambda_B"] = 10.0
-            params["lambda_identity"] = 0.5
+            params["lambda_A"] = "10.0"
+            params["lambda_B"] = "10.0"
+            params["lambda_identity"] = " 0.5"
 
         if (not import_celeba) and i == 0:
             params["continue_train"] = False
