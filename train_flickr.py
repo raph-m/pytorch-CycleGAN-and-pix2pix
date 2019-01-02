@@ -20,6 +20,7 @@ if __name__ == "__main__":
 
         params["display_freq"] = "100"
         params["dataroot"] = "my_data/celeba"
+        params["direction"] = "BtoA"
 
         if i == 0:
             params["lambda_A"] = "1.0"
