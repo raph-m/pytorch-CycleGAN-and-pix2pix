@@ -9,8 +9,8 @@ if __name__ == "__main__":
 
         if import_celeba:
             results_dir += "_import_celeba"
-            copy_generator(origin="AtoB")
-            copy_generator(origin="BtoA")
+            copy_generator(origin="AtoB", model_to_import="celeba")
+            copy_generator(origin="BtoA", model_to_import="celeba")
             flickr_train_params["continue_train"] = True
 
         for i in [0]:
