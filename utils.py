@@ -21,8 +21,8 @@ elif env_name == "compute_engine":
     cycle_batch_size = "16"
     pix2pix_batch_size = "64"
 
-cuhk = {"n_epochs": 400, "save_epoch_freq": "100"}
-flickr = {"n_epochs": 1000, "save_epoch_freq": "100"}
+cuhk = {"n_epochs": 1000, "save_epoch_freq": "200"}
+flickr = {"n_epochs": 1000, "save_epoch_freq": "200"}
 celeba = {"n_epochs": 20, "save_epoch_freq": "1"}
 
 netg = "unet_256"
@@ -93,7 +93,6 @@ celeba_pix2pix_train_params = {
 celeba_cycle_train_params = {
     "niter_decay": str(int(celeba["n_epochs"] / 2)),
     "niter": str(int(celeba["n_epochs"] / 2)),
-    "save_epoch_freq": "1",
     "lambda_A": "10.0",
     "lambda_B": "10.0",
     "lambda_identity": " 0"
@@ -110,9 +109,11 @@ flickr_params = {
 }
 
 flickr_train_params = {
-    "save_epoch_freq": "1",
     "niter_decay": str(int(flickr["n_epochs"] / 2)),
     "niter": str(int(flickr["n_epochs"] / 2)),
+    "lambda_A": "10.0",
+    "lambda_B": "10.0",
+    "lambda_identity": " 0"
 }
 
 flickr_params.update(base_params)
