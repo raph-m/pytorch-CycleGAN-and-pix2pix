@@ -18,8 +18,8 @@ elif env_name == "hind":
     pix2pix_batch_size = "8"
 
 elif env_name == "compute_engine":
-    cycle_batch_size = "64"
-    pix2pix_batch_size = "16"
+    cycle_batch_size = "16"
+    pix2pix_batch_size = "64"
 
 cuhk = {"n_epochs": 400, "save_epoch_freq": "100"}
 flickr = {"n_epochs": 1000, "save_epoch_freq": "100"}
