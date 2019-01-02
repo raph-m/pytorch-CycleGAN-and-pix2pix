@@ -10,8 +10,6 @@ if __name__ == "__main__":
     params.update(celeba_train_params)
 
     params["save_latest_freq"] = str(4992 * 5)
-    params["continue_train"] = True
-    params["load_iter"] = "1307904"
 
     my_train(params, first_arg)
 
