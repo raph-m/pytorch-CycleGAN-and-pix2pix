@@ -24,7 +24,7 @@ if __name__ == "__main__":
         if i == 0:
             params["lambda_A"] = "1.0"
             params["lambda_B"] = "1.0"
-            params["lambda_identity"] = "0.5"
+            params["lambda_identity"] = "0"
 
         else:
             params["lambda_A"] = "10.0"
