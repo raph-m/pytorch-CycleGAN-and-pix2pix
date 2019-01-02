@@ -11,7 +11,7 @@ if __name__ == "__main__":
 
     # 4992
 
-    for i in range(10):
+    for i in range(1, 11):
         n_iter = str(4992 * 40)
         results_dir = os.path.join("celeba_benchmark", n_iter)
         params["load_iter"] = n_iter
