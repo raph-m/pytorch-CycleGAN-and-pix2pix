@@ -10,91 +10,107 @@ import os
 
 
 if env_name == "raph":
-    cuhk = {"batch_size": "4", "n_epochs": 50}
-    flickr = {"batch_size": "1", "n_epochs": 2}
-    celeba = {"batch_size": "4", "n_epochs": 2}
+    cycle_batch_size = "1"
+    pix2pix_batch_size = "8"
 
 elif env_name == "hind":
-    cuhk = {"batch_size": "8", "n_epochs": 5}
-    flickr = {"batch_size": "1", "n_epochs": 2}
-    celeba = {"batch_size": "1", "n_epochs": 2}
+    cycle_batch_size = "1"
+    pix2pix_batch_size = "8"
 
 elif env_name == "compute_engine":
-    cuhk = {"batch_size": "16", "n_epochs": 100}
-    flickr = {"batch_size": "16", "n_epochs": 10}
-    celeba = {"batch_size": "64", "n_epochs": 100}
+    cycle_batch_size = "64"
+    pix2pix_batch_size = "16"
 
-local_params = {"cuhk": cuhk, "flickr": flickr, "celeba": celeba}
+cuhk = {"n_epochs": 400, "save_epoch_freq": "100"}
+flickr = {"n_epochs": 1000, "save_epoch_freq": "100"}
+celeba = {"n_epochs": 20, "save_epoch_freq": "1"}
 
 netg = "unet_256"
 
 base_params = {
     "input_nc": "3",
     "output_nc": "3",
-    "no_dropout": True,  # TODO: we should probably remove this because default for cycle gan is False
-    "norm": "batch"
+    "netG": netg
 }
 
-cuhk_params = {
+cuhk_pix2pix_params = {
     "dataset_mode": "unaligned",
     "dataroot": "my_data/cuhk",
     "model": "pix2pix",
-    "netG": netg,
-    "batch_size": local_params["cuhk"]["batch_size"]
+    "batch_size": pix2pix_batch_size,
+    "name": "cuhk_pix2pix"
 }
 
-cuhk_train_params = {
-    "save_epoch_freq": "5",
-    "niter_decay": str(int(local_params["cuhk"]["n_epochs"] / 2)),
-    "niter": str(int(local_params["cuhk"]["n_epochs"] / 2)),
-    "no_lsgan": True,
-    "continue_train": False
-}
-
-cuhk_params.update(base_params)
-cuhk_params_a_to_b = {"direction": "AtoB", "name": "cuhk_pix2pix_AtoB"}
-cuhk_params_a_to_b.update(cuhk_params)
-cuhk_params_b_to_a = {"direction": "BtoA", "name": "cuhk_pix2pix_BtoA"}
-cuhk_params_b_to_a.update(cuhk_params)
-
-celeba_params = {
-    "dataset_mode": "aligned",
-    "dataroot": "my_data/celeba",
+cuhk_cycle_params = {
+    "dataroot": "my_data/cuhk",
     "model": "pix2pix",
-    "netG": netg,
-    "batch_size": local_params["celeba"]["batch_size"]
+    "batch_size": cycle_batch_size,
+    "name": "cuhk_cycle"
 }
 
-celeba_train_params = {
-    "niter_decay": str(int(local_params["cuhk"]["n_epochs"] / 2)),
-    "niter": str(int(local_params["cuhk"]["n_epochs"] / 2)),
-    "no_lsgan": True,
-    "continue_train": False,
-    "save_latest_freq": str(4992 * 40),
-    "save_epoch_freq": str(4992 * 40),
-    "save_by_iter": True
+cuhk_pix2pix_train_params = {
+    "save_epoch_freq": cuhk["save_epoch_freq"],
+    "niter_decay": str(int(cuhk["n_epochs"] / 2)),
+    "niter": str(int(cuhk["n_epochs"] / 2)),
+    "lambda_L1": "10.0"
 }
 
-celeba_params.update(base_params)
-celeba_params_a_to_b = {"direction": "AtoB", "name": "celeba_pix2pix_AtoB"}
-celeba_params_a_to_b.update(celeba_params)
-celeba_params_b_to_a = {"direction": "BtoA", "name": "celeba_pix2pix_BtoA"}
-celeba_params_b_to_a.update(celeba_params)
+cuhk_cycle_train_params = {
+    "save_epoch_freq": cuhk["save_epoch_freq"],
+    "niter_decay": str(int(cuhk["n_epochs"] / 2)),
+    "niter": str(int(cuhk["n_epochs"] / 2)),
+    "lambda_A": "10.0",
+    "lambda_B": "10.0",
+    "lambda_identity": " 0"
+}
+
+cuhk_pix2pix_params.update(base_params)
+cuhk_cycle_params.update(base_params)
+
+celeba_cycle_params = {
+    "dataroot": "my_data/celeba",
+    "model": "cycle_gan",
+    "batch_size": cycle_batch_size,
+    "name": "celeba_cycle"
+}
+
+celeba_pix2pix_params = {
+    "dataroot": "my_data/celeba",
+    "model": "cycle_gan",
+    "batch_size": pix2pix_batch_size,
+    "name": "celeba_pix2pix"
+}
+
+celeba_pix2pix_train_params = {
+    "niter_decay": str(int(celeba["n_epochs"] / 2)),
+    "niter": str(int(celeba["n_epochs"] / 2)),
+    "save_epoch_freq": "1",
+    "lambda_L1": "10.0"
+}
+
+celeba_cycle_train_params = {
+    "niter_decay": str(int(celeba["n_epochs"] / 2)),
+    "niter": str(int(celeba["n_epochs"] / 2)),
+    "save_epoch_freq": "1",
+    "lambda_A": "10.0",
+    "lambda_B": "10.0",
+    "lambda_identity": " 0"
+}
+
+celeba_pix2pix_params.update(base_params)
+celeba_cycle_params.update(base_params)
 
 flickr_params = {
     "dataroot": "my_data/flickr",
     "name": "flickr",
     "model": "cycle_gan",
-    "netG": netg,
-    "batch_size": local_params["flickr"]["batch_size"],
+    "batch_size": cycle_batch_size
 }
 
 flickr_train_params = {
     "save_epoch_freq": "1",
-    "niter_decay": str(int(local_params["flickr"]["n_epochs"] / 2)),
-    "niter": str(int(local_params["flickr"]["n_epochs"] / 2)),
-    "no_lsgan": True,
-    "continue_train": False
+    "niter_decay": str(int(flickr["n_epochs"] / 2)),
+    "niter": str(int(flickr["n_epochs"] / 2)),
 }
 
 flickr_params.update(base_params)
