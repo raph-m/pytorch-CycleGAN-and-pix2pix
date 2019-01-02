@@ -121,7 +121,7 @@ def my_train(params, first_arg):
 
 def my_test(params, first_arg, benchmark=False, results_dir="benchmark_results"):
     current_params = params.copy()
-    current_params["num_test"] = 100000
+    current_params["num_test"] = "100000"
 
     if benchmark:
         current_params["dataroot"] = "my_data/benchmark"
