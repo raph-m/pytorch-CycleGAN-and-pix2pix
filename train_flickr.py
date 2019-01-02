@@ -19,10 +19,11 @@ if __name__ == "__main__":
         params.update(flickr_train_params)
 
         params["display_freq"] = "100"
+        params["dataroot"] = "my_data/celeba"
 
         if i == 0:
-            params["lambda_A"] = "1"
-            params["lambda_B"] = "1"
+            params["lambda_A"] = "1.0"
+            params["lambda_B"] = "1.0"
             params["lambda_identity"] = "0.5"
 
         else:
