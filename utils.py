@@ -31,7 +31,7 @@ netg = "unet_256"
 base_params = {
     "input_nc": "3",
     "output_nc": "3",
-    "no_dropout": True,
+    "no_dropout": True,  # TODO: we should probably remove this because default for cycle gan is False
     "norm": "batch"
 }
 

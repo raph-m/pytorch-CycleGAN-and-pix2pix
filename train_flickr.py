@@ -4,7 +4,9 @@ from utils import my_train, flickr_train_params, flickr_params, my_test, copy_ge
 if __name__ == "__main__":
     first_arg = sys.argv[0]
 
-    for import_celeba in [True, False]:
+    import_celeba = True
+
+    for i in range(2):
         results_dir = "benchmark_results"
 
         if import_celeba:
@@ -13,19 +15,26 @@ if __name__ == "__main__":
             copy_generator(origin="BtoA", model_to_import="celeba")
             flickr_train_params["continue_train"] = True
 
-        for i in [0]:
+        params = flickr_params.copy()
+        params.update(flickr_train_params)
 
-            params = flickr_params.copy()
+        if i == 0:
+            params["lambda_A"] = 0.1
+            params["lambda_B"] = 0.1
+            params["lambda_identity"] = 0.5
 
-            params.update(flickr_train_params)
+        else:
+            params["lambda_A"] = 10.0
+            params["lambda_B"] = 10.0
+            params["lambda_identity"] = 0.5
 
-            if (not import_celeba) and i == 0:
-                params["continue_train"] = False
-            else:
-                params["continue_train"] = True
+        if (not import_celeba) and i == 0:
+            params["continue_train"] = False
+        else:
+            params["continue_train"] = True
 
-            my_train(params, first_arg)
+        my_train(params, first_arg)
 
-            # my_test(flickr_params, first_arg, benchmark=True, results_dir=results_dir + str(i))
+        my_test(flickr_params, first_arg, benchmark=True, results_dir=results_dir + str(i))
 
 
