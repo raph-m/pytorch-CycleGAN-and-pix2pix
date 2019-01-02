@@ -23,7 +23,7 @@ elif env_name == "hind":
 
 elif env_name == "compute_engine":
     cuhk = {"batch_size": "16", "n_epochs": 100}
-    flickr = {"batch_size": "8", "n_epochs": 10}
+    flickr = {"batch_size": "16", "n_epochs": 100}
     celeba = {"batch_size": "64", "n_epochs": 100}
     local_params = {"cuhk": cuhk, "flickr": flickr, "celeba": celeba}
 
@@ -143,8 +143,8 @@ def create_env_file():
     f.close()
 
 
-def copy_generator(origin="AtoB"):
-    path1 = os.path.join("checkpoints", "cuhk_pix2pix_" + origin, "latest_net_G.pth")
+def copy_generator(origin="AtoB", model_to_import="celeba"):
+    path1 = os.path.join("checkpoints", model_to_import + "_pix2pix_" + origin, "latest_net_G.pth")
     if origin == "AtoB":
         target = "latest_net_G_A.pth"
     else:
