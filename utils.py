@@ -36,6 +36,7 @@ base_params = {
 cuhk_pix2pix_params = {
     "dataset_mode": "unaligned",
     "dataroot": "my_data/cuhk",
+    "direction": "BtoA",
     "model": "pix2pix",
     "batch_size": pix2pix_batch_size,
     "name": "cuhk_pix2pix"
@@ -78,7 +79,8 @@ celeba_pix2pix_params = {
     "dataroot": "my_data/celeba",
     "model": "cycle_gan",
     "batch_size": pix2pix_batch_size,
-    "name": "celeba_pix2pix"
+    "name": "celeba_pix2pix",
+    "direction": "BtoA"
 }
 
 celeba_pix2pix_train_params = {
