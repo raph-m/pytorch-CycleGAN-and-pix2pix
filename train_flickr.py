@@ -18,7 +18,7 @@ if __name__ == "__main__":
         params = flickr_params.copy()
         params.update(flickr_train_params)
 
-        params["display_freq"] = 100
+        params["display_freq"] = "100"
 
         if i == 0:
             params["lambda_A"] = "1"
