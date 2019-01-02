@@ -22,6 +22,7 @@ if __name__ == "__main__":
     params["direction"] = "BtoA"
     params["continue_train"] = True
     params["save_latest_freq"] = str(4992 * 800)
+    params["display_freq"] = "100"
 
     params["lambda_L"] = "1.0"
 
