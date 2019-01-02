@@ -18,5 +18,5 @@ if __name__ == "__main__":
         my_test(celeba_params_b_to_a, first_arg, benchmark=True, results_dir=results_dir)
 
     import shutil
-    shutil.make_archive("celeba_bemchmark", 'zip', "celeba_bemchmark")
+    shutil.make_archive("celeba_benchmark", 'zip', "celeba_benchmark")
 

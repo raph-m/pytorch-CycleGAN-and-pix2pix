@@ -7,9 +7,13 @@ if __name__ == "__main__":
 
     params = celeba_params_b_to_a.copy()
     params.update(celeba_train_params)
+
+    params["continue_train"] = True
+    params["load_iter"] = "1307904"
+
     my_train(params, first_arg)
 
-    my_test(celeba_params_b_to_a, first_arg, benchmark=True, results_dir="benchmark_results")
+    # my_test(celeba_params_b_to_a, first_arg, benchmark=True, results_dir="benchmark_results")
 
 
 
