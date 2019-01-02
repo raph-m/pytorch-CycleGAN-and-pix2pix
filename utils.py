@@ -43,7 +43,7 @@ cuhk_pix2pix_params = {
 
 cuhk_cycle_params = {
     "dataroot": "my_data/cuhk",
-    "model": "pix2pix",
+    "model": "cycle_gan",
     "batch_size": cycle_batch_size,
     "name": "cuhk_cycle"
 }
