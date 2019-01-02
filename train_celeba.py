@@ -21,8 +21,7 @@ if __name__ == "__main__":
 
     params["direction"] = "BtoA"
     params["continue_train"] = True
-    params["load_iter"] = "1307904"
-    params["save_latest_freq"] = str(4992 * 1)
+    params["save_latest_freq"] = str(4992 * 25)
 
     my_train(params, first_arg)
 
