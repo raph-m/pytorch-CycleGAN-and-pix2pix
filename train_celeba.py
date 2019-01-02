@@ -9,6 +9,7 @@ if __name__ == "__main__":
     params = celeba_params_b_to_a.copy()
     params.update(celeba_train_params)
 
+    params["direction"] = "AtoB"
     params["save_latest_freq"] = str(4992 * 5)
 
     my_train(params, first_arg)
@@ -17,6 +18,7 @@ if __name__ == "__main__":
     params = celeba_params_b_to_a.copy()
     params.update(celeba_train_params)
 
+    params["direction"] = "BtoA"
     params["continue_train"] = True
     params["load_iter"] = "1307904"
 
