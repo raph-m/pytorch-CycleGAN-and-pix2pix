@@ -5,6 +5,17 @@ from utils import my_train, celeba_params_a_to_b, celeba_train_params, \
 if __name__ == "__main__":
     first_arg = sys.argv[0]
 
+    # train AtoB
+    params = celeba_params_b_to_a.copy()
+    params.update(celeba_train_params)
+
+    params["save_latest_freq"] = str(4992 * 5)
+    params["continue_train"] = True
+    params["load_iter"] = "1307904"
+
+    my_train(params, first_arg)
+
+    # train BtoA
     params = celeba_params_b_to_a.copy()
     params.update(celeba_train_params)
 
