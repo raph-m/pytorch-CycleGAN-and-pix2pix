@@ -30,13 +30,13 @@ netg = "unet_256"
 base_params = {
     "input_nc": "3",
     "output_nc": "3",
-    "netG": netg
+    "netG": netg,
+    "direction": "BtoA"
 }
 
 cuhk_pix2pix_params = {
     "dataset_mode": "aligned",
     "dataroot": "my_data/cuhk",
-    "direction": "BtoA",
     "model": "pix2pix",
     "batch_size": pix2pix_batch_size,
     "name": "cuhk_pix2pix"
@@ -80,8 +80,7 @@ celeba_pix2pix_params = {
     "dataroot": "my_data/celeba",
     "model": "cycle_gan",
     "batch_size": pix2pix_batch_size,
-    "name": "celeba_pix2pix",
-    "direction": "BtoA"
+    "name": "celeba_pix2pix"
 }
 
 celeba_pix2pix_train_params = {

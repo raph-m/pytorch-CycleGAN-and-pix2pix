@@ -8,14 +8,14 @@ if __name__ == "__main__":
     flickr_params["epoch"] = "85"
     my_test(flickr_params, first_arg, benchmark=True, results_dir="benchmark_results")
 
-    params = cuhk_cycle_params.copy()
-    params.update(cuhk_cycle_train_params)
+    params = cuhk_pix2pix_params.copy()
+    params.update(cuhk_pix2pix_train_params)
     my_train(params, first_arg)
 
     my_test(cuhk_cycle_params, first_arg, benchmark=True, results_dir="benchmark_results")
 
-    params = cuhk_pix2pix_params.copy()
-    params.update(cuhk_pix2pix_train_params)
+    params = cuhk_cycle_params.copy()
+    params.update(cuhk_cycle_train_params)
     my_train(params, first_arg)
 
     my_test(cuhk_cycle_params, first_arg, benchmark=True, results_dir="benchmark_results")
