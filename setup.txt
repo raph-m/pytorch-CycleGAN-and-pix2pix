@@ -1,27 +1,34 @@
-# download repo
-# cd to repo
-
 git clone https://github.com/raph-m/pytorch-CycleGAN-and-pix2pix.git
 cd pytorch-CycleGAN-and-pix2pix/
 
 # install requirements. dont ask why the pip script installs in the wrong directory so I had to specify the target
 sudo pip install -r requirements.txt --target /opt/anaconda3/lib/python3.7/site-package
+# ou bien package par package:
 sudo pip install unrar --target /opt/anaconda3/lib/python3.7/site-package
+
+# essayer avec un s à site-packages si ca marche pas
 
 
 # dont ask why you must install it with the regular pip too
 sudo pip install visdom
 
+# download the rar folder:
 python download_google_drive.py
 
-# doesnt work with new zip, probably because its too big
-# try
-# wget --no-check-certificate 'https://docs.google.com/uc?export=download&id=FILEID' -O FILENAME
-wget --no-check-certificate 'https://docs.google.com/uc?export=download&id=1eb6EltjSy157hmaYN4bH19-Wq89j9Elt' -O gdrive.zip
+#install unrar
+wget https://www.rarlab.com/rar/unrar_5.2.5-0.1_amd64.deb
+sudo dpkg -i unrar_5.2.5-0.1_amd64.deb
+
+# unrar the file:
+unrar x gdrive.zip
+
+# pour lancer visdom avec nohup: (il faut toujours le lancer avec nohup)
+nohup sudo python -m visdom.server > visdom_out.txt &
+
+# run the scripts in background:
+nohup python train_cuhk.py > nohup_out.txt &
 
 
-# unzip benchmark to the good location
-unzip benchmark.zip -d pytorch-CycleGAN-and-pix2pix/gdrive/datasets/benchmark/
 
 
 # zip results:
@@ -29,15 +36,11 @@ zip -r benchmark_results.zip benchmark_results
 zip -r benchmark_results_import0.zip benchmark_results_import0
 zip -r benchmark_results0.zip benchmark_results0
 
-python -m "visdom.server"
-
-# run training, for example:
-python my_scripts.py
-
 # download the file:
 pytorch-CycleGAN-and-pix2pix/benchmark_results.zip
 
-#ssh key 
+
+#ssh key for tunnel ssh
 
 sur GoogleCloud SDKI 
  gcloud init
@@ -46,21 +49,12 @@ sur GoogleCloud SDKI
  ssh -i recvis_ssh -L 5000:localhost:8097 LOGIN@EXT_IP
  sudo python -m visdom.server
 
-# comment runner des scripts en background:
-# il faudrait aussi runner le visdom.server en background je pense
-nohup python my_scripts.py > nohup_out.txt &
-# et quand t'as fait ca tout tourne en background et tu peux fermer toutes les fenêtres de connections SSH. et ca va
-# continuer à tourner. Tu peux afficher ce qu'il se passe dans le fichier nohup_out avec la commande:
-cat nohup.txt
 
-# ensuite le script est en background donc c'est galère si tu veux l'arrêter:
 # tu peux runner cette commande pour voir les trucs en train de tourner:
 ps -ef |grep nohup
 # et enfin tu peux killer le process avec ca (remplacer le truc par l'ID tu process):
 kill 1804
 
-pour lancer visdom avec nohup: (il faut toujours le lancer avec nohup)
-nohup sudo python -m visdom.server > visdom_out.txt &
 
 # les commandes nvidia-smi et htop permettent de voir l'utilisation des ressources. Idéalement tu augmentes le
 # batch_size jusqu'a ce que ca te mette un out of memory error
