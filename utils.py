@@ -21,6 +21,10 @@ elif env_name == "compute_engine":
     cycle_batch_size = "16"
     pix2pix_batch_size = "64"
 
+elif env_name == "compute_engine_fast":
+    cycle_batch_size = "32"
+    pix2pix_batch_size = "128"
+
 cuhk = {"n_epochs": 1000, "save_epoch_freq": "200"}
 flickr = {"n_epochs": 100, "save_epoch_freq": "20"}
 celeba = {"save_epoch_freq": "1"}
