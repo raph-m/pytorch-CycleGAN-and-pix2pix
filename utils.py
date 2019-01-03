@@ -94,8 +94,8 @@ celeba_pix2pix_train_params = {
 celeba_cycle_train_params = {
     "niter_decay": str(int(celeba["n_epochs"] / 2)),
     "niter": str(int(celeba["n_epochs"] / 2)),
-    "lambda_A": "10.0",
-    "lambda_B": "10.0",
+    "lambda_A": "1.0",
+    "lambda_B": "1.0",
     "lambda_identity": " 0"
 }
 
@@ -113,8 +113,8 @@ flickr_train_params = {
     "niter_decay": str(int(flickr["n_epochs"] / 2)),
     "niter": str(int(flickr["n_epochs"] / 2)),
     "save_epoch_freq": flickr["save_epoch_freq"],
-    "lambda_A": "10.0",  # prochaine fois je pense qu'on peut mettre encore moins
-    "lambda_B": "10.0",  # pareil
+    "lambda_A": "1.0",  # dernier train c'était 10 donc si on retente autant faire 1 pour voir
+    "lambda_B": "1.0",  # pareil
     "lambda_identity": " 0"
 }
 
