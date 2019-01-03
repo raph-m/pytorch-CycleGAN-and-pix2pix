@@ -23,7 +23,7 @@ elif env_name == "compute_engine":
 
 cuhk = {"n_epochs": 1000, "save_epoch_freq": "200"}
 flickr = {"n_epochs": 100, "save_epoch_freq": "20"}
-celeba = {"n_epochs": 20, "save_epoch_freq": "1"}
+celeba = {"save_epoch_freq": "1"}
 
 netg = "unet_256"
 
@@ -78,21 +78,21 @@ celeba_cycle_params = {
 celeba_pix2pix_params = {
     "dataset_mode": "aligned",
     "dataroot": "my_data/celeba",
-    "model": "cycle_gan",
+    "model": "pix2pix",
     "batch_size": pix2pix_batch_size,
     "name": "celeba_pix2pix"
 }
 
 celeba_pix2pix_train_params = {
-    "niter_decay": str(int(celeba["n_epochs"] / 2)),
-    "niter": str(int(celeba["n_epochs"] / 2)),
+    "niter_decay": "5",
+    "niter": "5",
     "save_epoch_freq": "1",
     "lambda_L1": "10.0"
 }
 
 celeba_cycle_train_params = {
-    "niter_decay": str(int(celeba["n_epochs"] / 2)),
-    "niter": str(int(celeba["n_epochs"] / 2)),
+    "niter_decay": "3",
+    "niter": "2",
     "lambda_A": "1.0",
     "lambda_B": "1.0",
     "lambda_identity": " 0"
