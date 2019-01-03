@@ -62,7 +62,7 @@ cuhk_cycle_train_params = {
     "niter": str(int(cuhk["n_epochs"] / 2)),
     "lambda_A": "1.0",
     "lambda_B": "1.0",
-    "lambda_identity": " 0"
+    "lambda_identity": "0"
 }
 
 cuhk_pix2pix_params.update(base_params)
@@ -95,7 +95,7 @@ celeba_cycle_train_params = {
     "niter": "2",
     "lambda_A": "1.0",
     "lambda_B": "1.0",
-    "lambda_identity": " 0"
+    "lambda_identity": "0"
 }
 
 celeba_pix2pix_params.update(base_params)
