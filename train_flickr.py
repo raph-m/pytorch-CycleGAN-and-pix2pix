@@ -1,44 +1,21 @@
 import sys
-from utils import my_train, flickr_train_params, flickr_params, my_test, copy_generator
+from utils import my_train, flickr_train_params, flickr_params, my_test, copy_networks
 
 if __name__ == "__main__":
+
+    do_import = False
+
     first_arg = sys.argv[0]
 
-    import_celeba = True
+    if do_import:
+        copy_networks(model_to_import="celeba_cycle", iter="5")
+        flickr_train_params["continue_train"] = True
+        flickr_params["name"] = "flickr_import"
 
-    for i in range(2):
-        results_dir = "benchmark_results"
+    params = flickr_params.copy()
+    params.update(flickr_train_params)
+    my_train(params, first_arg)
 
-        if import_celeba:
-            results_dir += "_import_celeba"
-            copy_generator(origin="AtoB", model_to_import="celeba")
-            copy_generator(origin="BtoA", model_to_import="celeba")
-            flickr_train_params["continue_train"] = True
-
-        params = flickr_params.copy()
-        params.update(flickr_train_params)
-
-        params["display_freq"] = "100"
-        params["dataroot"] = "my_data/celeba"
-        params["direction"] = "BtoA"
-
-        if i == 0:
-            params["lambda_A"] = "1.0"
-            params["lambda_B"] = "1.0"
-            params["lambda_identity"] = "0"
-
-        else:
-            params["lambda_A"] = "10.0"
-            params["lambda_B"] = "10.0"
-            params["lambda_identity"] = " 0.5"
-
-        if (not import_celeba) and i == 0:
-            params["continue_train"] = False
-        else:
-            params["continue_train"] = True
-
-        my_train(params, first_arg)
-
-        my_test(flickr_params, first_arg, benchmark=True, results_dir=results_dir + str(i))
+    my_test(flickr_params, first_arg, benchmark=True, results_dir="benchmark_results")
 
 

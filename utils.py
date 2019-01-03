@@ -177,5 +177,22 @@ def copy_generator(origin="AtoB", model_to_import="celeba"):
     copyfile(path1, path2)
 
 
+def copy_networks(model_to_import="celeba_cycle", iter="5"):
+    origin_path = os.path.join("checkpoints", model_to_import)
+
+    files_to_copy = ["_net_D_A.pth", "_net_D_B.pth", "_net_G_A.pth", "_net_G_B.pth"]
+
+    target_path = os.path.join("checkpoints", "flickr_import")
+
+    if not os.path.exists(target_path):
+        os.mkdir(target_path)
+
+    for filename in files_to_copy:
+        origin_filename = os.path.join(origin_path, iter + filename)
+        target_filename = os.path.join(target_path, "latest" + filename)
+
+        copyfile(origin_filename, target_filename)
+
+
 if __name__ == "__main__":
     create_env_file()
