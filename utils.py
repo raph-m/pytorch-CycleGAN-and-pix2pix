@@ -97,6 +97,7 @@ celeba_pix2pix_train_params = {
 celeba_cycle_train_params = {
     "niter_decay": "3",
     "niter": "2",
+    "save_epoch_freq": "1",
     "lambda_A": "1.0",
     "lambda_B": "1.0",
     "lambda_identity": "0"
