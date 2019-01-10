@@ -10,10 +10,10 @@ if __name__ == "__main__":
     params.update(celeba_pix2pix_train_params)
 
     celeba_pix2pix_params["epoch"] = "5"
-    my_test(celeba_pix2pix_params, first_arg, benchmark=True, results_dir="benchmark_results_epoch5")
+    my_test(celeba_pix2pix_params, first_arg, benchmark=True, results_dir="train_results_5")
 
     celeba_pix2pix_params["epoch"] = "10"
-    my_test(celeba_pix2pix_params, first_arg, benchmark=True, results_dir="benchmark_results")
+    my_test(celeba_pix2pix_params, first_arg, benchmark=True, results_dir="train_results_10")
 
 
 
