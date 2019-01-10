@@ -149,7 +149,7 @@ def my_test(params, first_arg, benchmark=False, results_dir="benchmark_results")
     current_params["num_test"] = "100000"
 
     if benchmark:
-        current_params["dataroot"] = "my_data/benchmark"
+        current_params["dataroot"] = "my_data/celeba"
         current_params["results_dir"] = results_dir
         current_params["dataset_mode"] = "unaligned"
 
