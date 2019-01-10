@@ -9,9 +9,11 @@ if __name__ == "__main__":
     params = celeba_cycle_params.copy()
     params.update(celeba_cycle_train_params)
 
-    my_train(params, first_arg)
+    celeba_cycle_params["epoch"] = "5"
 
-    my_test(celeba_cycle_params, first_arg, benchmark=True, results_dir="benchmark_results")
+    #my_train(params, first_arg)
+
+    my_test(celeba_cycle_params, first_arg, benchmark=True, results_dir="train_results_cycle")
 
 
 
