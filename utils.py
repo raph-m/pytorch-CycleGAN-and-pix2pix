@@ -144,7 +144,7 @@ def my_train(params, first_arg):
     train(opt)
 
 
-def my_test(params, first_arg, benchmark=False, results_dir="benchmark_results"):
+def my_test(params, first_arg, benchmark=False, results_dir="train_results"):
     current_params = params.copy()
     current_params["num_test"] = "100000"
 
