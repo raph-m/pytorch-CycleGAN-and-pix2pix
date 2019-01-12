@@ -95,6 +95,7 @@ for experiment in experiments:
         if actual_filename[-6:] == "fake_B":
             fnames.append(all_fnames[i])
             pred = gender_prediction(paths[i])
+            print("pred:", pred)
             preds.append(pred[0])
 
     fnames = np.array(fnames)
@@ -112,6 +113,7 @@ for experiment in experiments:
         for i in range(part.shape[0]):
             pyx = part[i, :]
             scores.append(entropy(pyx, py))
+            print("entropy: ", entropy(pyx, py))
         split_scores.append(np.exp(np.mean(scores)))
 
     print("avg split score: ", np.mean(split_scores))
