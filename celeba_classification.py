@@ -10,15 +10,6 @@ from keras.optimizers import SGD
 from scipy.stats import entropy
 from my_align_script import get_file_paths
 
-# set variables
-main_folder = 'my_data/celeba/'
-images_folder = main_folder + 'trainA/'
-
-EXAMPLE_PIC = images_folder + '000506.jpg'
-
-TRAINING_SAMPLES = 10000
-VALIDATION_SAMPLES = 2000
-TEST_SAMPLES = 2000
 IMG_WIDTH = 178
 IMG_HEIGHT = 218
 BATCH_SIZE = 16
@@ -56,7 +47,7 @@ model_.compile(
     metrics=['accuracy']
 )
 
-model_.load_weights(os.path.join(main_folder, 'weights.best.inc.male.hdf5'))
+model_.load_weights('weights.best.inc.male.hdf5')
 
 
 def gender_prediction(filename):
@@ -84,23 +75,30 @@ def gender_prediction(filename):
 experiments = ["pix2pix_5_epochs", "pix2pix_10_epochs", "cycle"]
 
 results_dir = {
-    "pix2pix_5_epochs": "my_data/celeba/testA/",
-    "pix2pix_10_epochs": "my_data/celeba/testA/",
-    "cycle": "my_data/celeba/testA/",
+    "pix2pix_5_epochs": os.path.join("inception_results_epoch5", "celeba_pix2pix", "images"),
+    "pix2pix_10_epochs": os.path.join("inception_results", "celeba_pix2pix", "images"),
+    "cycle": os.path.join("inception_results_epoch5", "celeba_cycle", "images")
 }
 
 for experiment in experiments:
     print("experiment: ", experiment)
 
-    paths, fnames = get_file_paths(results_dir[experiment], also_filenames=True)
+    paths, all_fnames = get_file_paths(results_dir[experiment], also_filenames=True)
 
-    preds = np.zeros((len(paths), 2))
+    preds = []
+
+    fnames = []
 
     for i in range(len(paths)):
-        pred = gender_prediction(paths[i])
-        preds[i, :] = pred[0]
+        tmp = all_fnames[i].split(".")
+        actual_filename, _ = tmp[0], tmp[1]
+        if actual_filename[-6:] == "fake_B":
+            fnames.append(all_fnames[i])
+            pred = gender_prediction(paths[i])
+            preds.append(pred[0])
 
     fnames = np.array(fnames)
+    preds = np.array(preds)
 
     # Now compute the mean kl-div
     splits = 10

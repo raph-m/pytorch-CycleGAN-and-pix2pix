@@ -29,7 +29,7 @@ if __name__ == "__main__":
     test(opt)
 
     current_params = celeba_cycle_params.copy()
-    current_params["epoch"] = "5"
+    current_params["epoch"] = "5"  # TODO: check this
     current_params["num_test"] = "10000"
     current_params["dataroot"] = "my_data/celeba"
     current_params["results_dir"] = "inception_results_epoch5"
