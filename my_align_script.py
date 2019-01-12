@@ -9,7 +9,6 @@ def get_file_paths(folder, also_filenames=False):
     for root, dirs, filenames in os.walk(folder):
         filenames = sorted(filenames)
         my_filenames = filenames.copy()
-        print(filenames)
         for filename in filenames:
             input_path = os.path.abspath(root)
             file_path = os.path.join(input_path, filename)
