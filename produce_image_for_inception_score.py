@@ -17,7 +17,6 @@ if __name__ == "__main__":
     sys.argv = set_argv(current_params, first_arg)
     opt = TestOptions().parse()
     test(opt)
-    """
 
     current_params = celeba_pix2pix_params.copy()
     current_params["epoch"] = "10"
@@ -28,6 +27,7 @@ if __name__ == "__main__":
     sys.argv = set_argv(current_params, first_arg)
     opt = TestOptions().parse()
     test(opt)
+    """
 
     current_params = celeba_cycle_params.copy()
     current_params["epoch"] = "5"  # TODO: check this
