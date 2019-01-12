@@ -10,7 +10,7 @@ if __name__ == "__main__":
     params.update(celeba_pix2pix_train_params)
 
     celeba_pix2pix_params["continue_train"] = True
-    celeba_pix2pix_params["epoch"] = "6"
+    celeba_pix2pix_params["epoch_count"] = "6"
 
     my_train(params, first_arg)
 
