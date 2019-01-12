@@ -113,11 +113,11 @@ for experiment in experiments:
             pyx = part[i, :]
             scores.append(entropy(pyx, py))
         split_scores.append(np.exp(np.mean(scores)))
-        print('mean scores',np.mean(scores))
-        print('exp',np.exp(np.mean(scores)))
 
-    print("avg split score: ", np.mean(split_scores))
-    print("std split score: ", np.std(split_scores))
+        print(split_scores)
+
+    print("avg split score: ", np.mean(np.array(split_scores)))
+    print("std split score: ", np.std(np.array(split_scores)))
 
     max_prob = np.max(preds, axis=1)
     sorted_indexes = np.argsort(max_prob)
