@@ -3,12 +3,12 @@ from utils import my_train, flickr_train_params, flickr_params, my_test, copy_ne
 
 if __name__ == "__main__":
 
-    do_import = False
+    do_import = True
 
     first_arg = sys.argv[0]
 
     if do_import:
-        copy_networks(model_to_import="celeba_cycle", iter="5")
+        copy_networks(model_to_import="celeba_cycle", iter="2")
         flickr_train_params["continue_train"] = True
         flickr_params["name"] = "flickr_import"
 

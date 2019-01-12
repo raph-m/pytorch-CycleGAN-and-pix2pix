@@ -97,6 +97,7 @@ celeba_pix2pix_train_params = {
 celeba_cycle_train_params = {
     "niter_decay": "3",
     "niter": "2",
+    "save_epoch_freq": "1",
     "lambda_A": "1.0",
     "lambda_B": "1.0",
     "lambda_identity": "0"
@@ -143,12 +144,12 @@ def my_train(params, first_arg):
     train(opt)
 
 
-def my_test(params, first_arg, benchmark=False, results_dir="benchmark_results"):
+def my_test(params, first_arg, benchmark=False, results_dir="train_results"):
     current_params = params.copy()
     current_params["num_test"] = "100000"
 
     if benchmark:
-        current_params["dataroot"] = "my_data/benchmark"
+        current_params["dataroot"] = "my_data/celeba"
         current_params["results_dir"] = results_dir
         current_params["dataset_mode"] = "unaligned"
 
