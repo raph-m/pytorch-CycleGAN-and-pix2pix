@@ -103,7 +103,7 @@ for experiment in experiments:
     # Now compute the mean kl-div
     splits = 10
     split_scores = []
-    n = len(paths)
+    n = len(fnames)
 
     for k in range(splits):
         part = preds[k * (n // splits): (k + 1) * (n // splits), :]
