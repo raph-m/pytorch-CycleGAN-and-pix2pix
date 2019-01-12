@@ -7,8 +7,8 @@ from test import test
 if __name__ == "__main__":
     first_arg = sys.argv[0]
 
+    """
     current_params = celeba_pix2pix_params.copy()
-
     current_params["epoch"] = "5"
     current_params["num_test"] = "10000"
     current_params["dataroot"] = "my_data/celeba"
@@ -17,6 +17,7 @@ if __name__ == "__main__":
     sys.argv = set_argv(current_params, first_arg)
     opt = TestOptions().parse()
     test(opt)
+    """
 
     current_params = celeba_pix2pix_params.copy()
     current_params["epoch"] = "10"
