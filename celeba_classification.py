@@ -75,9 +75,9 @@ def gender_prediction(filename):
 experiments = ["pix2pix_5_epochs", "pix2pix_10_epochs", "cycle"]
 
 results_dir = {
-    "pix2pix_5_epochs": os.path.join("inception_results_epoch5", "celeba_pix2pix", "images"),
-    "pix2pix_10_epochs": os.path.join("inception_results", "celeba_pix2pix", "images"),
-    "cycle": os.path.join("inception_results_epoch5", "celeba_cycle", "images")
+    "pix2pix_5_epochs": os.path.join("inception_results_epoch5", "celeba_pix2pix", "test_5", "images"),
+    "pix2pix_10_epochs": os.path.join("inception_results", "celeba_pix2pix", "test_10", "images"),
+    "cycle": os.path.join("inception_results_epoch5", "celeba_cycle", "test_5", "images")
 }
 
 for experiment in experiments:
